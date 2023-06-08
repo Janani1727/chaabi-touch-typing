@@ -1,26 +1,275 @@
-import React, { useState, useEffect, useRef } from 'react';
-import sound from "./music/notification.mp3"
-import "./styles/TouchTypingApp.css"
+import React, { useState, useEffect, useRef } from "react";
+import sound from "./music/notification.mp3";
+import "./styles/TouchTypingApp.css";
 
-const keysToPractice = ['a','s','k',' ' ,
-'d','a','d' ,' ' ,
-'s ' ,' a' ,'l ' ,'a ' ,' d' ,' s' ,' ' ,
-' f' ,'a ' ,' l' ,'l ' ,' ' ,
-' l' ,' a' ,'s ' ,' s' ,' ',
-'a ',' l','l ',' ',
-' a','d ','s ',' ',
-' a' ,'d ' ,' d' ,' ' ,
-// 's ' ,'a ' ,' l' ,' s' ,'a ' ,
-// 'j ' ,'a ' ,'f ' ,'f ' ,  ' ' ,
-// 'k ' ,'a ' ,'d ' ,' ' ,
-// 'f ' ,' l' ,'a ' ,' s' ,' k ' ,' ' ,
-// 's ' ,' a' ,' d' ,' ' ,
-// 'a ' ,' l' ,' f' ,' a' ,' '
+const keysToPractice = [
+  "a",
+  "s",
+  "k",
+  " ",
+  "d",
+  "a",
+  "d",
+  " ",
+  "s",
+  "a",
+  "l",
+  "a",
+  "d",
+  "s",
+  " ",
+  "f",
+  "a",
+  "l",
+  "l",
+  " ",
+  "l",
+  "a",
+  "s",
+  "s",
+  " ",
+  "a",
+  "l",
+  "l",
+  " ",
+  "a",
+  "d",
+  "s",
+  " ",
+  "a",
+  "d",
+  "d",
+  " ",
+  "s ",
+  "a ",
+  "l",
+  "s",
+  "a",
+  "j",
+  "a",
+  "f",
+  "f",
+  " ",
+  "k",
+  "a",
+  "d",
+  " ",
+  "f",
+  "l",
+  "a",
+  "s",
+  "k",
+  " ",
+  "s",
+  "a",
+  "d",
+  " ",
+  "a",
+  "l",
+  "f",
+  "a",
+  " ",
+  "a",
+  "s",
+  "k",
+  " ",
+  "d",
+  "a",
+  "d",
+  " ",
+  "s",
+  "a",
+  "l",
+  "a",
+  "d",
+  "s",
+  " ",
+  "f",
+  "a",
+  "l",
+  "l",
+  " ",
+  "l",
+  "a",
+  "s",
+  "s",
+  " ",
+  "a",
+  "l",
+  "l",
+  " ",
+  "a",
+  "d",
+  "s",
+  " ",
+  "a",
+  "d",
+  "d",
+  " ",
+  "s",
+  "a",
+  "l",
+  "s",
+  "a",
+  "j",
+  "a",
+  "f",
+  "f",
+  " ",
+  "k",
+  "a",
+  "d",
+  " ",
+  "f",
+  "l",
+  "a",
+  "s",
+  "k",
+  " ",
+  "s",
+  "a",
+  "d",
+  " ",
+  "a",
+  "l",
+  "f",
+  "a",
+  " ",
+  "a",
+  "s",
+  "k",
+  " ",
+  "d",
+  "a",
+  "d",
+  " ",
+  "s",
+  "a",
+  "l",
+  "a",
+  "d",
+  "s",
+  " ",
+  "f",
+  "a",
+  "l",
+  "l",
+  " ",
+  "l",
+  "a",
+  "s",
+  "s",
+  " ",
+  "a",
+  "l",
+  "l",
+  " ",
+  "a",
+  "d",
+  "s",
+  " ",
+  "a",
+  "d",
+  "d",
+  " ",
+  "s ",
+  "a ",
+  "l",
+  "s",
+  "a",
+  "j",
+  "a",
+  "f",
+  "f",
+  " ",
+  "k",
+  "a",
+  "d",
+  " ",
+  "f",
+  "l",
+  "a",
+  "s",
+  "k",
+  " ",
+  "s",
+  "a",
+  "d",
+  " ",
+  "a",
+  "l",
+  "f",
+  "a",
+  " ",
+  "a",
+  "s",
+  "k",
+  " ",
+  "d",
+  "a",
+  "d",
+  " ",
+  "s",
+  "a",
+  "l",
+  "a",
+  "d",
+  "s",
+  " ",
+  "f",
+  "a",
+  "l",
+  "l",
+  " ",
+  "l",
+  "a",
+  "s",
+  "s",
+  " ",
+  "a",
+  "l",
+  "l",
+  " ",
+  "a",
+  "d",
+  "s",
+  " ",
+  "a",
+  "d",
+  "d",
+  " ",
+  "s",
+  "a",
+  "l",
+  "s",
+  "a",
+  "j",
+  "a",
+  "f",
+  "f",
+  " ",
+  "k",
+  "a",
+  "d",
+  " ",
+  "f",
+  "l",
+  "a",
+  "s",
+  "k",
+  " ",
+  "s",
+  "a",
+  "d",
+  " ",
+  "a",
+  "l",
+  "f",
+  "a",
 ];
-// 
-//   add salsa jaff kad; flask lass sad fall alfa jak kaj dad ask
+
 const TouchTypingApp = () => {
-  const [typedText, setTypedText] = useState('');
+  const [typedText, setTypedText] = useState("");
   const [accuracy, setAccuracy] = useState(100);
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
@@ -30,8 +279,12 @@ const TouchTypingApp = () => {
   const [timerRunning, setTimerRunning] = useState(false);
   const notificationSoundRef = useRef(null);
 
+  const play = () => {
+    new Audio(sound).play();
+  };
+
   const startTimer = () => {
-    setTypedText('');
+    setTypedText("");
     setAccuracy(100);
     setRemainingTime(300);
     setTimerRunning(true);
@@ -63,12 +316,24 @@ const TouchTypingApp = () => {
       setCurrentKeyIndex(typedText.length);
     }
     if (accuracy < 100) {
-      notificationSoundRef.current.play();
+      // notificationSoundRef.current.play();
     }
   }, [typedText, accuracy]);
 
+  // const handleKeyDown = (e) => {
+  //   if (e.key === 'Backspace') {
+  //     e.preventDefault();
+  //     setTypedText((prevText) => prevText.slice(0, -1));
+  //     return;
+  //   }
+
+  //   const keyPressed = e.key.toLowerCase();
+  //   setTypedText((prevText) => prevText + keyPressed);
+  //   setAccuracy(calculateAccuracy(keyPressed));
+  // };
+  let keyPressed;
   const handleKeyDown = (e) => {
-    if (e.key === 'Backspace') {
+    if (e.key === "Backspace") {
       e.preventDefault();
       setTypedText((prevText) => prevText.slice(0, -1));
       return;
@@ -76,23 +341,35 @@ const TouchTypingApp = () => {
 
     const keyPressed = e.key.toLowerCase();
     setTypedText((prevText) => prevText + keyPressed);
-    setAccuracy(calculateAccuracy(keyPressed));
-  };
+    const isCorrectKey = keyPressed === keysToPractice[typedText.length];
+    // console.log(keyPressed);
+    console.log(isCorrectKey, "check");
+    console.log(keysToPractice[typedText.length]);
+    console.log(keyPressed);
 
-  
+    if (keyPressed != keysToPractice[typedText.length]) {
+      setAccuracy(
+        (prevAccuracy) => prevAccuracy - (1 / keysToPractice.length) * 100
+      );
+      console.log("first");
+      play();
+    }
+  };
 
   const calculateAccuracy = (keyPressed) => {
     const totalKeystrokes = typedText.length + 1;
     const incorrectKeystrokes = [...typedText, keyPressed].reduce(
-      (count, char, index) => (char !== keysToPractice[index] ? count + 1 : count),
+      (count, char, index) =>
+        char !== keysToPractice[index] ? count + 1 : count,
       0
     );
-    const calculatedAccuracy = ((totalKeystrokes - incorrectKeystrokes) / totalKeystrokes) * 100;
+    const calculatedAccuracy =
+      ((totalKeystrokes - incorrectKeystrokes) / totalKeystrokes) * 100;
     return calculatedAccuracy.toFixed(2);
   };
 
   const calculateTypingSpeed = () => {
-    const wordsTyped = typedText.trim().split(' ').length;
+    const wordsTyped = typedText.trim().split(" ").length;
     const elapsedTimeInMinutes = (endTime - startTime) / 1000 / 60;
     const wordsPerMinute = (wordsTyped / elapsedTimeInMinutes).toFixed(0);
     return wordsPerMinute;
@@ -100,18 +377,20 @@ const TouchTypingApp = () => {
 
   const getKeyColor = (index) => {
     if (typedText.length > index) {
-      return typedText[index] === keysToPractice[index] ? 'green' : 'red';
+      return typedText[index] === keysToPractice[index] ? "green" : "red";
     }
     if (index === currentKeyIndex) {
-      return 'yellow';
+      return "yellow";
     }
-    return 'white';
+    return "white";
   };
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    return `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   useEffect(() => {
@@ -122,30 +401,41 @@ const TouchTypingApp = () => {
 
   return (
     <div className="touch-typing-app">
-      
-      <div style={{border:"0px solid blue",width:"70%", margin:"auto"}} >
-      <h1>Touch Typing Practice</h1>
-      {!timerRunning ? (
-        <button className="start-button" onClick={startTimer}>
-          Start
-        </button>
-      ) : (
-        <div className="keyboard-container">
-          <div style={{border:"0px solid green",width:"100%",display:"flex"}}>
-          {keysToPractice.map((key, index) => (
-            <span
-              key={index}
-              className={`key ${getKeyColor(index)}`}
+      <div style={{ border: "0px solid blue", width: "70%", margin: "auto" }}>
+        <h1>Touch Typing Practice</h1>
+        {!timerRunning ? (
+          <button className="start-button" onClick={startTimer}>
+            Start
+          </button>
+        ) : (
+          <div className="keyboard-container">
+            <div
+              style={{
+                border: "3px solid green",
+                width: "auto",
+                display: "grid",
+                padding:"8px",
+                height: "auto",
+                gridTemplateColumns:"repeat(50, 20px)"
+              }}
             >
-              {key}
-            </span>
-          ))}
+              {keysToPractice.map((key, index) => (
+                <p key={index} className={`key ${getKeyColor(index)}`}>
+                  {key}
+                </p>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
-      <audio ref={notificationSoundRef} src={sound} />
-      <textarea className="input-area" onKeyDown={handleKeyDown} value={typedText} readOnly />
+      {/* <audio ref={notificationSoundRef} src={sound} /> */}
+      <textarea
+        className="input-area"
+        onKeyDown={handleKeyDown}
+        value={typedText}
+        readOnly
+        // disabled={}
+      />
       <div className="stats-container">
         <div className="stat-item">
           <span className="stat-label">Accuracy:</span>
