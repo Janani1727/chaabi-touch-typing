@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+##Touch Typing App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Touch typing is typing without looking at the keyboard. The fundamental idea is that each finger is given its own section of the keyboard and your fingers learn the location of the keyboard through practicing regularly and gaining muscle memory to eventually build up speed whilst typing.
 
-## Available Scripts
+Deployed Link of the Assignment: https://touch-typing-orcin.vercel.app/
 
-In the project directory, you can run:
+In this app ,
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+              1) The upcoming letter to be typed will be highlighted in yellow color,
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+              2) If the letter typed is correct then it will be highlighted with green color 
+              
+              
+              3) If the letter typed is incorrect then it will be highlighted with red color and an sound beeps to indicate
+                 the character is wrong
+                 
+                 
+              4) Conditional rendering is implemented , when we click start button , then the timer starts and then 
+                 text to be typed appears
+              
+## before hitting start button
+![Screenshot 2023-06-08 115329](https://github.com/Janani1727/chaabi-touch-typing/assets/109611448/f3a4bf45-2299-456b-991e-c42a8f5ae6d6)
 
-### `npm test`
+## after hitting start button
+![Screenshot 2023-06-08 120316](https://github.com/Janani1727/chaabi-touch-typing/assets/109611448/1b67bb46-b8dc-468f-9cc5-c7c9ffba1044)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+              
